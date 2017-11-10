@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ReactorController : MonoBehaviour {
-	public Image red;
-	public Image green;
+
 	public EnergyStorage energyStorage;
 
 	private ReactorModel rm;
@@ -24,9 +23,6 @@ public class ReactorController : MonoBehaviour {
 	void Start () {
 		rm.SetFuel (10);
 		rm.SetEnergy (0);
-
-		red.enabled = true;
-		green.enabled = true;
 
 		energyStorage = new EnergyStorage ();
 
@@ -58,14 +54,8 @@ public class ReactorController : MonoBehaviour {
 			rm.SetEnergy(rm.GetEnergy() - rm.GetMaxcapacity());
 		}
 
-		if (energyStorage.GetCurrentCapacity () >= rm.GetMaxcapacity ()) {
-			energyStorage.SetOkToDistribute (true);
-			green.enabled = true;
-			red.enabled = false;
-		} else {
-			energyStorage.SetOkToDistribute (false);
-			red.enabled = true;
-			green.enabled = false;
+		if (energyStorage.GetCurrentCapacity() >=  rm.GetMaxcapacity()) {
+			energyStorage.SetOkToDistribute(true) ;
 		}
 	}
 
